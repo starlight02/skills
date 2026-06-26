@@ -1,22 +1,19 @@
 ---
 name: macos-admin-permission
 description: >-
-  Run approved macOS admin operations through the native authorization dialog using
-  AppleScript's `do shell script ... with administrator privileges`, instead of relying
-  on `sudo` (which requires a TTY and fails in GUI / agent contexts). Use this skill
-  whenever a task on macOS needs administrator privileges and should show the standard
-  GUI password prompt — editing protected files such as `/etc/paths`, `/etc/hosts`,
-  `/Library/LaunchDaemons/*.plist`, files owned by `root`; changing ownership or
-  permissions outside the user's home directory; creating, moving, chmod/chown in
-  `/Library`, `/usr/local`, `/opt`, or other protected directories; running system-level
-  `launchctl`, `systemsetup`, `pmset`, `tmutil` commands; installing or removing system
-  services; or recovering from `sudo: a terminal is required`, `Permission denied`, or
-  `Operation not permitted` failures where admin rights are the missing piece. Also use
-  whenever the user says "ask for the password", "request admin", "弹权限框", "use the
-  macOS permission prompt", or mentions `osascript` / AppleScript for elevation. Always
-  consult this skill before running any privileged macOS command — picking the wrong
-  pattern (e.g. `sudo` inside an agent) wastes a turn and produces an unrecoverable
-  TTY error.
+  Run approved macOS admin operations via the native authorization dialog using
+  AppleScript's `do shell script ... with administrator privileges` instead of `sudo`
+  (needs a TTY, fails in GUI/agent contexts). Use whenever a macOS task needs
+  admin rights and should show the standard GUI password prompt: editing protected
+  files (`/etc/paths`, `/etc/hosts`, `/Library/LaunchDaemons/*.plist`, root-owned
+  files); chmod/chown or creating/moving files in `/Library`, `/usr/local`, `/opt`;
+  running system-level `launchctl`, `systemsetup`, `pmset`, `tmutil`; installing or
+  removing system services; or recovering from `sudo: a terminal is required`,
+  `Permission denied`, or `Operation not permitted` where admin rights are missing.
+  Also use when the user says "ask for the password", "request admin",
+  "弹权限框", "use the macOS permission prompt", or mentions `osascript`/AppleScript
+  for elevation. Consult before running any privileged macOS command — `sudo`
+  inside an agent wastes a turn with an unrecoverable TTY error.
 ---
 
 # macOS Admin Permission Prompt
